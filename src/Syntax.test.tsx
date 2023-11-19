@@ -41,4 +41,66 @@ describe('Syntax Component', () => {
     expect(Array.isArray(stringArray)).toBeTruthy(); // Checks if 'stringArray' is an array
     expect(stringArray.every(item => typeof item === 'string')).toBeTruthy(); // Checks if all items in 'stringArray' are strings
   });
+
+  // Testing for union and literal types
+  it('has correct union and literal types', () =>{
+    // Union Types
+    const someUnion: string | number = "Hello";
+
+    expect(typeof someUnion).toBe('string');
+    expect(typeof someUnion).not.toBe('number');
+
+    // Literal Types
+    const someLiteral: "red" | "green" | "blue" = "red";
+    
+    expect(someLiteral).toBe("red");
+    expect(someLiteral).not.toBe("green");
+  });
+
+  it('has correct enum types', () => {
+    // Testing for enums
+    enum Color {red, green, blue};
+    const selectedColor: Color = Color.red;
+    expect(selectedColor).toBe(Color.red);
+  });
+
+  // Testing for tuples:
+  it('has correct tuple types', () => {
+    enum Color {red, green, blue};
+    const aTuple: [string, number, Color] = ["Charisa", 22, Color.blue];
+    expect(aTuple[0]).toBe("Charisa");
+    expect(aTuple[1]).toBe(22);
+    expect(aTuple[2]).toBe(Color.blue);
+  });
+
+  it('has correct interface types', () => {
+    enum Color {red, green, blue};
+    interface Doggo {
+      name: string;
+      id: number;
+      rgbCollar: Color;
+    }
+
+    const doggo: Doggo = {name: "Calamari Extravaganza", id: 1997, rgbCollar: Color.green};
+    expect(doggo.name).toBe("Calamari Extravaganza");
+    expect(doggo.id).toBe(1997);
+    expect(doggo.rgbCollar).toBe(Color.green);
+  });
+
+    // Generic function to reverse an array
+  it('has correct generic types', () => {
+    function reverseArray<T>(arr: T[]): T[] {return arr.reverse();}
+    const numbers: number[] = [1,2,3,4,5];
+    const reversedNumbers = reverseArray(numbers);
+    expect(Array.isArray(reversedNumbers)).toBeTruthy();
+    expect(reversedNumbers).toEqual([5,4,3,2,1]);
+  });
+
+  it('has correct type assertions', () => {
+    const value: any = "Hello";
+    const length: number = (value as string).length;
+
+    expect(typeof length).toBe('number');
+    expect(length).toBe(5);
+  });
 });

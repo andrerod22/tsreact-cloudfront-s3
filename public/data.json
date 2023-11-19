@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Calamari Extravaganza",
+      "age": 5
+    },
+    {
+      "id": 2,
+      "name": "Buddy",
+      "age": 2
+    },
+    {
+      "id": 3,
+      "name": "Luna",
+      "age": 4
+    },
+    {
+      "id": 4,
+      "name": "Max",
+      "age": 2
+    },
+    {
+      "id": 5,
+      "name": "Molly",
+      "age": 3
+    }
+]
